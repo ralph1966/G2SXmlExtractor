@@ -35,7 +35,7 @@ public class ExtractXml {
 	G2sSort g2ssortns = new G2sSort();
 	
 	// Set G2S log file
-    g2ssortns.G2sMsgFile(g2sSourcefile);
+        g2ssortns.G2sMsgFile(g2sSourcefile);
 	
 	// Extract the normal G2S type messages from the above g2sSort object
 	ArrayList<String> g2smessages = g2ssortns.G2sSearch(searchingStartng2s,endsearching);
