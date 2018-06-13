@@ -20,9 +20,7 @@ class G2sSort {
 	public void G2sMsgFile (String g2sMsgFileArg) throws IOException {		
 		this.g2sMsgFile = g2sMsgFileArg;		
 		g2sfile = new String(Files.readAllBytes(Paths.get(g2sMsgFile)));			
-	}
-	
-	
+	}	
 
 	// The actual searching for xml patterns 
 	public ArrayList<String> G2sSearch (String start, String end) {
@@ -31,18 +29,19 @@ class G2sSort {
 		
 		ArrayList<String> g2sMsgArray = new ArrayList<String>();
 		g2sMsgArray.add("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); // Add XML header and main element so the FormatXml class can read it
-		g2sMsgArray.add("<allmessages>");
-				
+		g2sMsgArray.add("\n<allmessages>");
+		System.out.println(startSearch);		
+		System.out.println(endSearch);
 		
-		Pattern p = Pattern.compile(Pattern.quote(startSearch)  + ".*?" + Pattern.quote(endSearch));
+	
+		Pattern p = Pattern.compile(Pattern.quote(startSearch)  + "(.+?)" + Pattern.quote(endSearch),Pattern.DOTALL | Pattern.MULTILINE);
 		Matcher m = p.matcher(g2sfile);
 		
 		while (m.find()) {				
 		g2sMsgArray.add(m.group());
-	   // g2sMsgArray.add(" \r\n");
 		}		
 		
-		g2sMsgArray.add("</allmessages>"); // Add closing main XML element 
+		g2sMsgArray.add("\n</allmessages>"); // Add closing main XML element 
 		
 		return(g2sMsgArray);
 		

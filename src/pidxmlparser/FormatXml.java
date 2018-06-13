@@ -16,7 +16,7 @@ import javax.xml.transform.stream.StreamSource;
 /**
  * Will need Java 8 for formatting XML this way
  * 
- * 
+ * THis will format the XML to make it look pretty
  *
  */
 public class FormatXml {
